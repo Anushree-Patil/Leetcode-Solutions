@@ -1,0 +1,18 @@
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        uglies = (1,)
+        factor_two = factor_three = factor_five = 0
+        while len(uglies) < n:
+            while uglies[factor_two] * 2 <= uglies[-1]:
+                factor_two += 1
+
+            while uglies[factor_three] * 3 <= uglies[-1]:
+                factor_three += 1
+
+            while uglies[factor_five] * 5 <= uglies[-1]:
+                factor_five += 1
+
+            curr_ugly = min(uglies[factor_two] * 2, uglies[factor_three] * 3, uglies[factor_five] * 5)
+            uglies += (curr_ugly,)
+
+        return uglies[-1]
