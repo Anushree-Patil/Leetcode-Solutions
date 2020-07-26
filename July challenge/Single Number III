@@ -1,0 +1,11 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        xy = 0
+        for n in nums: xy ^= n
+        xy &= -xy
+        result = [0]*2
+        for n in nums:
+            if (xy & n) == 0: result[0] ^= n
+            else: result[1] ^= n
+        return result
+        
