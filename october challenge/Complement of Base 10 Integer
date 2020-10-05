@@ -1,0 +1,11 @@
+class Solution:
+    def bitwiseComplement(self, N: int) -> int:
+        s = str(bin(N))
+        sum = 0
+        num = 1
+        for i in s[::-1]:
+            if i == "b":
+                return sum
+            elif i =="0":
+                sum+=num
+            num*=2
